@@ -1,8 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/**
- * Inspired by Mike Bostock's Streamgraph & Lee Byron’s test data generator:
- * https://bl.ocks.org/mbostock/4060954
- */
  import React from 'react';
  import { Stack } from '@visx/shape';
  import { PatternCircles, PatternWaves } from '@visx/pattern';
@@ -10,9 +5,10 @@
  import { transpose } from 'd3-array';
  import { animated, useSpring } from 'react-spring';
  
- import useForceUpdate from './useForceUpdate';
- import generateData from '../generateData';
+ import useForceUpdate from '../lib/useForceUpdate';
+ import generateData from '../lib/generateData';
  
+
  // constants
  const NUM_LAYERS = 20;
  const SAMPLES_PER_LAYER = 200;
@@ -51,6 +47,7 @@
    animate?: boolean;
  };
  
+
  export default function Streamgraph({ width, height, animate = true }: StreamGraphProps) {
    const forceUpdate = useForceUpdate();
    const handlePress = () => forceUpdate();
@@ -67,23 +64,23 @@
  
    return (
      <svg width={width} height={height}>
-       <PatternCircles id="mustard" height={40} width={40} radius={5} fill="#036ecf" complement />
+       <PatternCircles id='mustard' height={40} width={40} radius={5} fill='#036ecf' complement />
        <PatternWaves
-         id="cherry"
+         id='cherry'
          height={12}
          width={12}
-         fill="transparent"
-         stroke="#232493"
+         fill='transparent'
+         stroke='#232493'
          strokeWidth={1}
        />
-       <PatternCircles id="navy" height={60} width={60} radius={10} fill="white" complement />
+       <PatternCircles id='navy' height={60} width={60} radius={10} fill='white' complement />
        <PatternCircles
          complement
-         id="circles"
+         id='circles'
          height={60}
          width={60}
          radius={10}
-         fill="transparent"
+         fill='transparent'
        />
  
        <g onClick={handlePress} onTouchStart={handlePress}>
@@ -91,7 +88,7 @@
          <Stack<number[], number>
            data={layers}
            keys={keys}
-           offset="wiggle"
+           offset='wiggle'
            color={colorScale}
            x={(_, i) => xScale(i) ?? 0}
            y0={getY0}
