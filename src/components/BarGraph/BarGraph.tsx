@@ -1,15 +1,13 @@
-import React from 'react';
 import { letterFrequency } from '@visx/mock-data';
 import { Group } from '@visx/group';
 import { Bar } from '@visx/shape';
 import { scaleLinear, scaleBand } from '@visx/scale';
+import { data } from '../lib/data';
 
-// We'll use some mock data from `@visx/mock-data` for this.
-const data = letterFrequency;
 
 // Define the graph dimensions and margins
 const width = 500;
-const height = 500;
+const height = 200;
 const margin = { top: 20, bottom: 20, left: 20, right: 20 };
 
 // Then we'll create some bounds
@@ -39,10 +37,10 @@ const xPoint = compose(xScale, x);
 const yPoint = compose(yScale, y);
 
 // Finally we'll embed it all in an SVG
-function BarGraph(props) {
+const BarGraph = ({data}) => {
   return (
     <svg width={width} height={height}>
-      {data.map((d, i) => {
+      {data.map((d: any, i: number) => {
         const barHeight = yMax - yPoint(d);
         return (
           <Group key={`bar-${i}`}>
@@ -51,7 +49,7 @@ function BarGraph(props) {
               y={yMax - barHeight}
               height={barHeight}
               width={xScale.bandwidth()}
-              fill="#fc2e1c"
+              fill="#943E46"
             />
           </Group>
         );

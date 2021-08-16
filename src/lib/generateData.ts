@@ -1,6 +1,5 @@
-import { getSeededRandom } from '@visx/mock-data';
+import 
 
-const random = getSeededRandom(0.65);
 
 const getPoints = (array: number[], pointCount: number) => {
   const x = 1 / (0.1 + random());
