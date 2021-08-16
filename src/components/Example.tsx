@@ -48,7 +48,7 @@
  };
  
 
- export default function Streamgraph({ width, height, animate = true }: StreamGraphProps) {
+ export default function Example({ width, height, animate = true }: StreamGraphProps) {
    const forceUpdate = useForceUpdate();
    const handlePress = () => forceUpdate();
  
@@ -85,7 +85,7 @@
  
        <g onClick={handlePress} onTouchStart={handlePress}>
          <rect x={0} y={0} width={width} height={height} fill={BACKGROUND} rx={14} />
-         <Stack<number[], number>
+         <Stack
            data={layers}
            keys={keys}
            offset='wiggle'
